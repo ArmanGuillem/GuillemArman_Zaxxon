@@ -6,7 +6,8 @@ public class PlayerManager : MonoBehaviour
     bool isPlayerAlive;
     public float speed;
     [SerializeField] float desplSpeed;
-    public float rotateSpeed;
+    public float rotate;
+    [SerializeField] float rotateSpeed;
     Vector2 Move;
     InputActions inputActions;
 
@@ -26,10 +27,10 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.right * Move.x * desplSpeed * Time.deltaTime);
-        transform.Translate(Vector2.up * Move.y * desplSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * Move.x * desplSpeed * Time.deltaTime, Space.World);
+        transform.Translate(Vector2.up * Move.y * desplSpeed * Time.deltaTime, Space.World);
 
-        transform.Rotate(Vector2.up * Move.y * desplSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward * rotate * Time.deltaTime * -360); 
     }
 
     private void OnEnable()
