@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         transform.Translate(Vector2.right * Move.x * desplSpeed * Time.deltaTime, Space.World);
         transform.Translate(Vector2.up * Move.y * desplSpeed * Time.deltaTime, Space.World);
 
-        transform.Rotate(Vector3.forward * rotate * Time.deltaTime * -360); 
+        transform.Rotate(Vector3.forward * rotate * Time.deltaTime * -360);     
     }
 
     private void OnEnable()
