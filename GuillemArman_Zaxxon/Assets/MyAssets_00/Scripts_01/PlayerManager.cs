@@ -6,11 +6,23 @@ public class PlayerManager : MonoBehaviour
     bool isPlayerAlive;
     public float speed;
     [SerializeField] float desplSpeed;
-    public float rotate; //Lo que rota segun el RS
+     //Lo que rota segun el RS
     [SerializeField] float rotationSpeed;
+
     Vector2 move;
+
     InputActions inputActions;
+
+    //Rotacion
     float maxRotation = 45f;
+    public float rotate;
+
+    //Suavizada
+    float origin;
+    float target;
+    [SerializeField] float smoothTime = 0.1f;
+    float rotationVelocity;
+
 
     //Limites de movimiento del jugador
     [SerializeField] float xMin = 0.5f, xMax = 9.5f, yMin = 0.5f, yMax = 5.5f;
@@ -38,15 +50,21 @@ public class PlayerManager : MonoBehaviour
 
         RotatePlayer();
 
-        // Clampea la posicion del jugador para que no se salga de la pantalla
-        Vector3 currentPos = transform.position;
-        currentPos.x = Mathf.Clamp(currentPos.x, xMin, xMax);
-        currentPos.y = Mathf.Clamp(currentPos.y, yMin, yMax);
-        transform.position = currentPos;
     }
     void RotatePlayer()
     {
-         transform.eulerAngles = Vector3.forward * maxRotation * rotate;
+        float currentZ = transform.eulerAngles.z;
+
+        // 2. Calculamos el ángulo objetivo (maxRotation * rotate, sin Vector3.forward)
+        float targetZ = -maxRotation * rotate;
+
+        // 3. Usamos SmoothDampAngle (toma el camino más corto automáticamente)
+        float smoothedZ = Mathf.SmoothDampAngle(currentZ, targetZ, ref rotationVelocity, smoothTime);
+
+        // 4. Aplicamos el nuevo ángulo al transform
+        transform.eulerAngles = new Vector3(0, 0, smoothedZ);
+
+
     }
     void MovePlayer()
     {
