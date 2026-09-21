@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
         // Mueve y rota al jugador en el eje X e Y
         MovePlayer();
 
-        transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * -360 * rotate);
+        RotatePlayer();
 
         // Clampea la posicion del jugador para que no se salga de la pantalla
         Vector3 currentPos = transform.position;
@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
     }
     void RotatePlayer()
     {
-         transform.eulerAngles = new Vector3.forward * maxRotation * rotate;
+         transform.eulerAngles = Vector3.forward * maxRotation * rotate;
     }
     void MovePlayer()
     {
