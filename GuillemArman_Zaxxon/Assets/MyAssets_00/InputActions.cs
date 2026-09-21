@@ -114,7 +114,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""rotate"",
                     ""type"": ""Value"",
                     ""id"": ""61f2bb9a-86e3-47e9-952b-ec798d0deb83"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -212,7 +212,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f5239198-2eb3-4254-bc9d-64d273c8c476"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
