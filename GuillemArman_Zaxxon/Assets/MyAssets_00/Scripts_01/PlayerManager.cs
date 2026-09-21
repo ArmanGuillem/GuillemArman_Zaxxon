@@ -10,20 +10,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] float rotationSpeed;
     Vector2 move;
     InputActions inputActions;
+    float maxRotation = 45f;
 
     //Limites de movimiento del jugador
     [SerializeField] float xMin = 0.5f, xMax = 9.5f, yMin = 0.5f, yMax = 5.5f;
-
-    //Ajustes de disparo
-    [Header("Shooting")]
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Transform firePoint;
 
     private void Awake()
     {
         inputActions = new InputActions();
 
-        inputActions.Player.Fire.performed += ctx => Shoot();
+        inputActions.Player.Fire.performed += ctx => Debug.Log("Fire");
 
         //Detecta los inputs del jugador y los asigna a las variables correspondientes
         inputActions.Player.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
@@ -38,8 +34,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         // Mueve y rota al jugador en el eje X e Y
-        transform.Translate(Vector2.right * move.x * desplSpeed * Time.deltaTime, Space.World);
-        transform.Translate(Vector2.up * move.y * desplSpeed * Time.deltaTime, Space.World);
+        MovePlayer();
 
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * -360 * rotate);
 
@@ -49,6 +44,20 @@ public class PlayerManager : MonoBehaviour
         currentPos.y = Mathf.Clamp(currentPos.y, yMin, yMax);
         transform.position = currentPos;
     }
+    void RotatePlayer()
+    {
+         transform.eulerAngles = new Vector3.forward * maxRotation * rotate;
+    }
+    void MovePlayer()
+    {
+        transform.Translate(Vector2.right * move.x * desplSpeed * Time.deltaTime, Space.World);
+        transform.Translate(Vector2.up * move.y * desplSpeed * Time.deltaTime, Space.World);
+
+    }
+    
+
+
+
 
     private void OnEnable()
     {
@@ -59,13 +68,4 @@ public class PlayerManager : MonoBehaviour
         inputActions.Disable();
     }
 
-    private void Shoot()
-    {
-        Debug.Log("Fire");
-        if (bulletPrefab != null && firePoint != null)
-        {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        }
-
-    }
 }
