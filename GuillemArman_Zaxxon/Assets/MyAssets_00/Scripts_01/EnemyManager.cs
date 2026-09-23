@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class EnemiManayer : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
-    float speed;
+    [SerializeField] float speed;
+    PlayerManager playerManager;
+    
+    
 
-    [SerializeField] PlayerManager playerManager;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,7 +20,22 @@ public class EnemiManayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
-        speed = playerManager.moveSpeed;
+        Move();
+
+        
+
     }
+
+    void Move()
+    {
+        transform.Translate(Vector3.back* speed * Time.deltaTime);
+        speed = playerManager.moveSpeed;
+
+
+    }
+
+    
 }
+
+
+

@@ -44,9 +44,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 262808591887803386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b63446f2a1b7a64e97a7c7786b55857, type: 3}
+  m_Script: {fileID: 11500000, guid: 43f8bc51e7447c0438137fbf17f6d511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemiManayer
+  speed: 0
   playerManager: {fileID: 0}
 --- !u!1 &792881336573856098
 GameObject:

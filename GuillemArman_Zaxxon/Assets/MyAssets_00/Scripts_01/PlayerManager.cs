@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    bool Alive = true;
+
     //Movimiento
     public float moveSpeed;
     [SerializeField] float desplSpeed;
