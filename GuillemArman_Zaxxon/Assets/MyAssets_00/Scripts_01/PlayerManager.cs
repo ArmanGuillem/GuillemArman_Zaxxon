@@ -3,29 +3,35 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    bool isPlayerAlive;
-    public float speed;
+    //Movimiento
+    public float moveSpeed;
     [SerializeField] float desplSpeed;
-     //Lo que rota segun el RS
-    [SerializeField] float rotationSpeed;
-
     Vector2 move;
 
-    InputActions inputActions;
+    float moveX;
+    float moveY;
+
 
     //Rotacion
-    float maxRotation = 45f;
+    float maxRotationZ = 45f;
+    float maxRotationX = 45f;
     public float rotate;
+    [SerializeField] float rotationSpeed;
+    Vector3 currentRot;
 
     //Suavizada
     float origin;
     float target;
     [SerializeField] float smoothTime = 0.1f;
-    float rotationVelocity;
+    private Vector3 rotationVelocity = Vector3.zero;
 
 
     //Limites de movimiento del jugador
     [SerializeField] float xMin = 0.5f, xMax = 9.5f, yMin = 0.5f, yMax = 5.5f;
+
+
+    InputActions inputActions;
+
 
     private void Awake()
     {
@@ -40,30 +46,28 @@ public class PlayerManager : MonoBehaviour
         inputActions.Player.rotate.performed += ctx => rotate = ctx.ReadValue<float>();
         inputActions.Player.rotate.canceled += _ => rotate = 0f;
 
+        moveSpeed = 100f;
+
     }
 
 
     private void Update()
     {
+        Limit();
         // Mueve y rota al jugador en el eje X e Y
         MovePlayer();
 
         RotatePlayer();
 
+        
     }
     void RotatePlayer()
     {
-        float currentZ = transform.eulerAngles.z;
-
-        // 2. Calculamos el ángulo objetivo (maxRotation * rotate, sin Vector3.forward)
-        float targetZ = -maxRotation * rotate;
-
-        // 3. Usamos SmoothDampAngle (toma el camino más corto automáticamente)
-        float smoothedZ = Mathf.SmoothDampAngle(currentZ, targetZ, ref rotationVelocity, smoothTime);
-
-        // 4. Aplicamos el nuevo ángulo al transform
-        transform.eulerAngles = new Vector3(0, 0, smoothedZ);
-
+        Vector3 vectorRotZ = Vector3.forward * -maxRotationZ *  move.x;
+        Vector3 vectorRotX = Vector3.right * -maxRotationX *  move.y; ;
+        Vector3 vectorRot = vectorRotX + vectorRotZ;
+        currentRot = Vector3.SmoothDamp(currentRot, vectorRot, ref rotationVelocity, smoothTime);
+        transform.eulerAngles = currentRot;
 
     }
     void MovePlayer()
@@ -72,10 +76,13 @@ public class PlayerManager : MonoBehaviour
         transform.Translate(Vector2.up * move.y * desplSpeed * Time.deltaTime, Space.World);
 
     }
-    
-
-
-
+    void Limit()
+    {
+        Vector3 currentPos = transform.position;
+        currentPos.x = Mathf.Clamp(currentPos.x, xMin, xMax);
+        currentPos.y = Mathf.Clamp(currentPos.y, yMin, yMax);
+        transform.position = currentPos;
+    }
 
     private void OnEnable()
     {
@@ -87,3 +94,14 @@ public class PlayerManager : MonoBehaviour
     }
 
 }
+
+//float currentZ = transform.eulerAngles.z;
+
+// 2. Calculamos el ángulo objetivo (maxRotation * rotate, sin Vector3.forward)
+// targetZ = -maxRotation * rotate;
+
+// 3. Usamos SmoothDampAngle (toma el camino más corto automáticamente)
+//float smoothedZ = Mathf.SmoothDampAngle(currentZ, targetZ, ref rotationVelocity, smoothTime);
+
+// 4. Aplicamos el nuevo ángulo al transform
+//transform.eulerAngles = new Vector3(0, 0, smoothedZ);
