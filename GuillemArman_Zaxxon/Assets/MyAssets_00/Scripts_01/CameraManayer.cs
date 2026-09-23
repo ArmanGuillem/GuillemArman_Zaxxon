@@ -4,7 +4,7 @@ public class CameraManayer : MonoBehaviour
 {
     [SerializeField] Transform playerTransform;
 
-    [SerializeField] float distance = 13;
+    [SerializeField] float distance = 15;
     [SerializeField] float verticalOffset = -3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

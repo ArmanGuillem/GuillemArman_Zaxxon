@@ -8,7 +8,6 @@ public class SpawnManayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine("spawnEnemy");
         StartCoroutine(spawnEnemy());
     }
 
@@ -34,7 +33,7 @@ public class SpawnManayer : MonoBehaviour
     {
         float spawnPosX = Random.Range(-9.5f, 9.5f);
         float spawnPosY = Random.Range(0.5f, 5.5f);
-        Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, 50f);
+        Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, 90f);
         int randomIndex = Random.Range(0, enemyPrefabs.Length);
         Instantiate(enemyPrefabs[randomIndex], spawnPos, Quaternion.identity);
         
