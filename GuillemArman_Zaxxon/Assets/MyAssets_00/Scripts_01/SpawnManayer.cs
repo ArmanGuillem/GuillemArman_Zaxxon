@@ -76,9 +76,8 @@ public class SpawnManayer : MonoBehaviour
         // Guardamos la referencia de la instancia creada
         GameObject newEnemie = Instantiate(enemyPrefabs[k], instPos, Quaternion.identity);
 
-        // Escalamos la instancia creada en lugar del prefab
-        float randomScale = Random.Range(minScale, maxScale);
-        newEnemie.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+        
+       
     }
 }
 
