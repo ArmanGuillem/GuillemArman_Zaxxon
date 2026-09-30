@@ -4,11 +4,12 @@ public class CameraManayer : MonoBehaviour
 {
     [SerializeField] Transform playerTransform;
 
-    [SerializeField] float distance = 15;
-    [SerializeField] float verticalOffset = -3;
+    [SerializeField] float distance;
+    [SerializeField] float verticalOffset;
+    [SerializeField] float pitchAngle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
         
     }
 
@@ -18,5 +19,18 @@ public class CameraManayer : MonoBehaviour
         Vector3 offset = new Vector3(0, verticalOffset, distance);
 
         transform.position = playerTransform.position - offset;
+
+        Rotate();
+
+
+        
     }
-}
+    
+    void Rotate()
+    {
+        float zAngle = playerTransform.eulerAngles.z;
+        Quaternion zRotation = Quaternion.Euler(pitchAngle, 0f, zAngle);
+        transform.rotation = zRotation;
+    }
+}   
+

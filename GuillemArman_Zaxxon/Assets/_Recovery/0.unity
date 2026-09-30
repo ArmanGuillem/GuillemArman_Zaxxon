@@ -148,15 +148,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4b4b75354bc724c82375a765db4eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
-  moveSpeed: 10
-  desplSpeed: 20
-  rotate: 0.4
-  rotationSpeed: 7.51
+  moveSpeed: 7
+  desplSpeed: 30
+  rotate: 0.04
+  rotationSpeed: 1
   smoothTime: 0.3
-  xMin: -25
-  xMax: 30
-  yMin: -15
-  yMax: 15
+  xMin: -15
+  xMax: 15
+  yMin: -1.5
+  yMax: 10
 --- !u!4 &55222850
 Transform:
   m_ObjectHideFlags: 0
@@ -203,19 +203,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9fe4b522679bd4e939e55db5cb9d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManayer
-  enemyPrefabs:
-  - {fileID: 262808591887803386, guid: 5237492633068b64ebd92508549a88ad, type: 3}
-  minEnemies: 3
-  maxEnemies: 6
-  xMin: -25
-  xMax: 35
-  yMin: -15
-  yMax: 15
-  minScale: 0.8
-  maxScale: 3
+  enemyPrefabs: []
+  minEnemies: 1
+  maxEnemies: 5
+  minScale: 0.5
+  maxScale: 2
   waves: 5
   firstEnemieDistance: 0
   distanceBetweemEnemies: 0
+  limitMinX: 0
+  limitMaxX: 0
+  limitMinY: 0
+  limitMaxY: 0
 --- !u!4 &102403494
 Transform:
   m_ObjectHideFlags: 0
@@ -225,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 102403492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 463.8}
+  m_LocalPosition: {x: 0, y: -0, z: 154.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -948,8 +947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManayer
   playerTransform: {fileID: 55222850}
-  distance: 20
-  verticalOffset: -2
+  distance: 10
+  verticalOffset: -1
 --- !u!114 &1257087999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,8 +1227,8 @@ Transform:
   m_GameObject: {fileID: 1413859895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -19.6, z: 218.5}
-  m_LocalScale: {x: 9.557218, y: 7.373653, z: 54.506653}
+  m_LocalPosition: {x: 0, y: -3.69, z: 88.1}
+  m_LocalScale: {x: 2.9707556, y: 2.4672, z: 21.31414}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 232457842}

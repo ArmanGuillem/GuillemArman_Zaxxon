@@ -15,21 +15,21 @@ public class PlayerManager : MonoBehaviour
 
 
     //Rotacion
-    float maxRotationZ = 45f;
-    float maxRotationX = 45f;
-    public float rotate;
+    float maxRotationZ = 20f;
+    float maxRotationX = 20f;
+    
     [SerializeField] float rotationSpeed;
     Vector3 currentRot;
 
     //Suavizada
     float origin;
     float target;
-    [SerializeField] float smoothTime = 0.1f;
+    [SerializeField] float smoothTime;
     private Vector3 rotationVelocity = Vector3.zero;
 
 
     //Limites de movimiento del jugador
-    [SerializeField] float xMin = 0.5f, xMax = 9.5f, yMin = 0.5f, yMax = 5.5f;
+    [SerializeField] float xMin, xMax, yMin, yMax;
 
 
     InputActions inputActions;
@@ -39,16 +39,14 @@ public class PlayerManager : MonoBehaviour
     {
         inputActions = new InputActions();
 
-        inputActions.Player.Fire.performed += ctx => Debug.Log("Fire");
+        inputActions.Player.Fire.performed += ctx => print ("Fire");
 
         //Detecta los inputs del jugador y los asigna a las variables correspondientes
         inputActions.Player.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled += _ => move = Vector2.zero;
 
-        inputActions.Player.rotate.performed += ctx => rotate = ctx.ReadValue<float>();
-        inputActions.Player.rotate.canceled += _ => rotate = 0f;
 
-        moveSpeed = 100f;
+        
 
     }
 

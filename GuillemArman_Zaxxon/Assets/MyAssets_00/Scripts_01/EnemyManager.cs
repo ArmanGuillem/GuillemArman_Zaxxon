@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] float speed;
+    float speed;
+    [SerializeField] float mySpeed;
+    Transform playerTransform;
     PlayerManager playerManager;
+
     
     
 
@@ -15,26 +18,33 @@ public class EnemyManager : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerManager = player.GetComponent<PlayerManager>();
+        playerTransform = player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        Despawn();
 
-        
 
     }
 
     void Move()
     {
+        speed = playerManager.moveSpeed + mySpeed;
         transform.Translate(Vector3.back* speed * Time.deltaTime);
-        speed = playerManager.moveSpeed;
 
 
     }
+    void Despawn()
+        {
+            if (transform.position.z < playerTransform.position.z)
+            {
+                Destroy(gameObject);
+            }
+    }
 
-    
 }
 
 
