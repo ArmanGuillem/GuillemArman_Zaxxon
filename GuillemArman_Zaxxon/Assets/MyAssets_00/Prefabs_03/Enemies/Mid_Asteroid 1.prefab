@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1049387280998244444}
   - component: {fileID: 2927047214112527843}
+  - component: {fileID: 9133855859567815991}
   m_Layer: 0
   m_Name: Mid_Asteroid 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262808591887803386}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.8717702, y: 0, z: 0, w: 0.48991507}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4832, y: 1.4832, z: 1.4832}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8093818663209097155}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 121.33, y: 0, z: 0}
 --- !u!114 &2927047214112527843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,6 +47,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemiManayer
   mySpeed: 50
+--- !u!65 &9133855859567815991
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262808591887803386}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.6272976, y: 3.5114882, z: 2.9139218}
+  m_Center: {x: 0.39890635, y: 0.6066247, z: 0.09338817}
 --- !u!1001 &8636140801635397672
 PrefabInstance:
   m_ObjectHideFlags: 0

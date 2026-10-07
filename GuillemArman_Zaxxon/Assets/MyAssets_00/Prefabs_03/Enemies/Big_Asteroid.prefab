@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1049387280998244444}
   - component: {fileID: 2927047214112527843}
+  - component: {fileID: 1205322539726011846}
   m_Layer: 0
   m_Name: Big_Asteroid
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +46,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f8bc51e7447c0438137fbf17f6d511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemiManayer
-  mySpeed: 5
+  mySpeed: 2
+--- !u!65 &1205322539726011846
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262808591887803386}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.304044, y: 6.58823, z: 6.837328}
+  m_Center: {x: 0.24303496, y: 1.0573716, z: 0.0052609444}
 --- !u!1001 &8636140801635397672
 PrefabInstance:
   m_ObjectHideFlags: 0

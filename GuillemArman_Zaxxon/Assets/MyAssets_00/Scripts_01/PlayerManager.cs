@@ -3,12 +3,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    bool Alive = true;
+    //Vidas y tal
+    bool isAlive = true;
+    public int health = 100;
+    public int lives = 3;
+    public int maxLives = 3;
+
+   
 
     //Movimiento
     public float moveSpeed;
     [SerializeField] float desplSpeed;
     Vector2 move;
+    [SerializeField] float accelerationRate;
+    float currentSpeed;
+
 
     float moveX;
     float moveY;
@@ -72,10 +81,30 @@ public class PlayerManager : MonoBehaviour
     }
     void MovePlayer()
     {
+        
         transform.Translate(Vector2.right * move.x * desplSpeed * Time.deltaTime, Space.World);
         transform.Translate(Vector2.up * move.y * desplSpeed * Time.deltaTime, Space.World);
 
+        currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, accelerationRate * Time.deltaTime);
+
+        // 3. Avance continuo en el eje Z (hacia adelante)
+        .
+        transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime), Space.World);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+            print ("Te has chocado");
+            moveSpeed = 0;
+            
+
+        }
+    }
+
+   
     void Limit()
     {
         Vector3 currentPos = transform.position;

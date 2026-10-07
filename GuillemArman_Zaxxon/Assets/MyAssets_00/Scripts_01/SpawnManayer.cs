@@ -13,9 +13,7 @@ public class SpawnManayer : MonoBehaviour
     //Limites de spawn
     [SerializeField] float xMin = -20f, xMax = 20f, yMin = -15, yMax = 15;
 
-    // Escalas
-    [SerializeField] float minScale = 0.5f;
-    [SerializeField] float maxScale = 2.0f;
+  
 
     // Numero de naves
     [SerializeField] int waves = 5;
@@ -75,9 +73,10 @@ public class SpawnManayer : MonoBehaviour
 
         // Guardamos la referencia de la instancia creada
         GameObject newEnemie = Instantiate(enemyPrefabs[k], instPos, Quaternion.identity);
-
         
-       
+
+
+
     }
 }
 
